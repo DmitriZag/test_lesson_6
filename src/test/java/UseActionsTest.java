@@ -1,5 +1,3 @@
-package guru.qa;
-
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -17,6 +15,8 @@ public class UseActionsTest {
     @Test
     void fillUseActionsTest() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
+        $("#column-a").$("header").shouldHave(text("A"));
+        $("#column-b").$("header").shouldHave(text("B"));
         actions().moveToElement($("#column-a")).clickAndHold().moveByOffset(200, 0).release().perform();
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
